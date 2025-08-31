@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Sudoku</title>
+		<link rel="stylesheet" href="sudoku.css">
+		<script src="script.js"></script>
+	</head>
+	<body onload="init()">
+	
+<!--
+	77 78 79 | 87 88 89 | 97 98 99
+	74    76 | 84    86 | 94    96
+	71 72 73 | 81 82 83 | 91 92 93
+	---------+----------+---------
+	47 48 49 | 57 58 59 | 67 68 69
+	44    46 | 54    56 | 64    66
+	41 42 43 | 51 52 53 | 61 62 63
+	---------+----------+---------
+	17 18 19 | 27 28 39 | 37 38 39
+	14    16 | 24    36 | 34    36
+	11 12 13 | 21 22 33 | 31 32 33
+-->
+
+		<h1>Sudoku helper page</h1>
+	
+		<p>Page that translates a Sudoku to a Prolog query</p>
+
+		<table>
+			<tr>
+				<td>
+					<table class="sudoku">
+						<tr>
+							<td id="77" class="td77"><input type="text" inputmode="numeric" min="1" max="9" id="i77" onclick="select();" oninput="updateTextArea();blur()"></input></td>
+							<td id="78" class="td78"><input type="text" inputmode="numeric" min="1" max="9" id="i78" onclick="select();" oninput="updateTextArea();blur()"></input></td>
+							<td id="79" class="td79"><input type="text" inputmode="numeric" min="1" max="9" id="i79" onclick="select();" oninput="updateTextArea();blur()"></input></td>
+							<td id="87" class="td87"><input type="text" inputmode="numeric" min="1" max="9" id="i87" onclick="select();" oninput="updateTextArea();blur()"></input></td>
+							<td id="88" class="td88"><input type="text" inputmode="numeric" min="1" max="9" id="i88" onclick="select();" oninput="updateTextArea();blur()"></input></td>
+							<td id="89" class="td89"><input type="text" inputmode="numeric" min="1" max="9" id="i89" onclick="select();" oninput="updateTextArea();blur()"></input></td>
+							<td id="97" class="td97"><input type="text" inputmode="numeric" min="1" max="9" id="i97" onclick="select();" oninput="updateTextArea();blur()"></input></td>
+							<td id="98" class="td98"><input type="text" inputmode="numeric" min="1" max="9" id="i98" onclick="select();" oninput="updateTextArea();blur()"></input></td>
+							<td id="99" class="td99"><input type="text" inputmode="numeric" min="1" max="9" id="i99" onclick="select();" oninput="updateTextArea();blur()"></input></td>
+						</tr>                                                                                       
+						<tr>                                                                                        
+							<td id="74" class="td74"><input type="text" inputmode="numeric" min="1" max="9" id="i74" onclick="select();" oninput="updateTextArea();blur()"></input></td>
+							<td id="75" class="td75"><input type="text" inputmode="numeric" min="1" max="9" id="i75" onclick="select();" oninput="updateTextArea();blur()"></input></td>
+							<td id="76" class="td76"><input type="text" inputmode="numeric" min="1" max="9" id="i76" onclick="select();" oninput="updateTextArea();blur()"></input></td>
+							<td id="84" class="td84"><input type="text" inputmode="numeric" min="1" max="9" id="i84" onclick="select();" oninput="updateTextArea();blur()"></input></td>
+							<td id="85" class="td85"><input type="text" inputmode="numeric" min="1" max="9" id="i85" onclick="select();" oninput="updateTextArea();blur()"></input></td>
+							<td id="86" class="td86"><input type="text" inputmode="numeric" min="1" max="9" id="i86" onclick="select();" oninput="updateTextArea();blur()"></input></td>
+							<td id="94" class="td94"><input type="text" inputmode="numeric" min="1" max="9" id="i94" onclick="select();" oninput="updateTextArea();blur()"></input></td>
+							<td id="95" class="td95"><input type="text" inputmode="numeric" min="1" max="9" id="i95" onclick="select();" oninput="updateTextArea();blur()"></input></td>
+							<td id="96" class="td96"><input type="text" inputmode="numeric" min="1" max="9" id="i96" onclick="select();" oninput="updateTextArea();blur()"></input></td>
+						</tr>                                                                                       
+						<tr>                                                                                        
+							<td id="71" class="td71"><input type="text" inputmode="numeric" min="1" max="9" id="i71" onclick="select();" oninput="updateTextArea();blur()"></input></td>
+							<td id="72" class="td72"><input type="text" inputmode="numeric" min="1" max="9" id="i72" onclick="select();" oninput="updateTextArea();blur()"></input></td>
+							<td id="73" class="td73"><input type="text" inputmode="numeric" min="1" max="9" id="i73" onclick="select();" oninput="updateTextArea();blur()"></input></td>
+							<td id="81" class="td81"><input type="text" inputmode="numeric" min="1" max="9" id="i81" onclick="select();" oninput="updateTextArea();blur()"></input></td>
+							<td id="82" class="td82"><input type="text" inputmode="numeric" min="1" max="9" id="i82" onclick="select();" oninput="updateTextArea();blur()"></input></td>
+							<td id="83" class="td83"><input type="text" inputmode="numeric" min="1" max="9" id="i83" onclick="select();" oninput="updateTextArea();blur()"></input></td>
+							<td id="91" class="td91"><input type="text" inputmode="numeric" min="1" max="9" id="i91" onclick="select();" oninput="updateTextArea();blur()"></input></td>
+							<td id="92" class="td92"><input type="text" inputmode="numeric" min="1" max="9" id="i92" onclick="select();" oninput="updateTextArea();blur()"></input></td>
+							<td id="93" class="td93"><input type="text" inputmode="numeric" min="1" max="9" id="i93" onclick="select();" oninput="updateTextArea();blur()"></input></td>
+						</tr>
+						<tr>
+							<td id="47" class="td47"><input type="text" inputmode="numeric" min="1" max="9" id="i47" onclick="select();" oninput="updateTextArea();blur()"></input></td>
+							<td id="48" class="td48"><input type="text" inputmode="numeric" min="1" max="9" id="i48" onclick="select();" oninput="updateTextArea();blur()"></input></td>
+							<td id="49" class="td49"><input type="text" inputmode="numeric" min="1" max="9" id="i49" onclick="select();" oninput="updateTextArea();blur()"></input></td>
+							<td id="57" class="td57"><input type="text" inputmode="numeric" min="1" max="9" id="i57" onclick="select();" oninput="updateTextArea();blur()"></input></td>
+							<td id="58" class="td58"><input type="text" inputmode="numeric" min="1" max="9" id="i58" onclick="select();" oninput="updateTextArea();blur()"></input></td>
+							<td id="59" class="td59"><input type="text" inputmode="numeric" min="1" max="9" id="i59" onclick="select();" oninput="updateTextArea();blur()"></input></td>
+							<td id="67" class="td67"><input type="text" inputmode="numeric" min="1" max="9" id="i67" onclick="select();" oninput="updateTextArea();blur()"></input></td>
+							<td id="68" class="td68"><input type="text" inputmode="numeric" min="1" max="9" id="i68" onclick="select();" oninput="updateTextArea();blur()"></input></td>
+							<td id="69" class="td69"><input type="text" inputmode="numeric" min="1" max="9" id="i69" onclick="select();" oninput="updateTextArea();blur()"></input></td>
+						</tr>                                                                                       
+						<tr>                                                                                        
+							<td id="44" class="td44"><input type="text" inputmode="numeric" min="1" max="9" id="i44" onclick="select();" oninput="updateTextArea();blur()"></input></td>
+							<td id="45" class="td45"><input type="text" inputmode="numeric" min="1" max="9" id="i45" onclick="select();" oninput="updateTextArea();blur()"></input></td>
+							<td id="46" class="td46"><input type="text" inputmode="numeric" min="1" max="9" id="i46" onclick="select();" oninput="updateTextArea();blur()"></input></td>
+							<td id="54" class="td54"><input type="text" inputmode="numeric" min="1" max="9" id="i54" onclick="select();" oninput="updateTextArea();blur()"></input></td>
+							<td id="55" class="td55"><input type="text" inputmode="numeric" min="1" max="9" id="i55" onclick="select();" oninput="updateTextArea();blur()"></input></td>
+							<td id="56" class="td56"><input type="text" inputmode="numeric" min="1" max="9" id="i56" onclick="select();" oninput="updateTextArea();blur()"></input></td>
+							<td id="64" class="td64"><input type="text" inputmode="numeric" min="1" max="9" id="i64" onclick="select();" oninput="updateTextArea();blur()"></input></td>
+							<td id="65" class="td65"><input type="text" inputmode="numeric" min="1" max="9" id="i65" onclick="select();" oninput="updateTextArea();blur()"></input></td>
+							<td id="66" class="td66"><input type="text" inputmode="numeric" min="1" max="9" id="i66" onclick="select();" oninput="updateTextArea();blur()"></input></td>
+						</tr>                                                                                       
+						<tr>                                                                                        
+							<td id="41" class="td41"><input type="text" inputmode="numeric" min="1" max="9" id="i41" onclick="select();" oninput="updateTextArea();blur()"></input></td>
+							<td id="42" class="td42"><input type="text" inputmode="numeric" min="1" max="9" id="i42" onclick="select();" oninput="updateTextArea();blur()"></input></td>
+							<td id="43" class="td43"><input type="text" inputmode="numeric" min="1" max="9" id="i43" onclick="select();" oninput="updateTextArea();blur()"></input></td>
+							<td id="51" class="td51"><input type="text" inputmode="numeric" min="1" max="9" id="i51" onclick="select();" oninput="updateTextArea();blur()"></input></td>
+							<td id="52" class="td52"><input type="text" inputmode="numeric" min="1" max="9" id="i52" onclick="select();" oninput="updateTextArea();blur()"></input></td>
+							<td id="53" class="td53"><input type="text" inputmode="numeric" min="1" max="9" id="i53" onclick="select();" oninput="updateTextArea();blur()"></input></td>
+							<td id="61" class="td61"><input type="text" inputmode="numeric" min="1" max="9" id="i61" onclick="select();" oninput="updateTextArea();blur()"></input></td>
+							<td id="62" class="td62"><input type="text" inputmode="numeric" min="1" max="9" id="i62" onclick="select();" oninput="updateTextArea();blur()"></input></td>
+							<td id="63" class="td63"><input type="text" inputmode="numeric" min="1" max="9" id="i63" onclick="select();" oninput="updateTextArea();blur()"></input></td>
+						</tr>                                                                                       
+						<tr>                                                                                        
+							<td id="17" class="td17"><input type="text" inputmode="numeric" min="1" max="9" id="i17" onclick="select();" oninput="updateTextArea();blur()"></input></td>
+							<td id="18" class="td18"><input type="text" inputmode="numeric" min="1" max="9" id="i18" onclick="select();" oninput="updateTextArea();blur()"></input></td>
+							<td id="19" class="td19"><input type="text" inputmode="numeric" min="1" max="9" id="i19" onclick="select();" oninput="updateTextArea();blur()"></input></td>
+							<td id="27" class="td27"><input type="text" inputmode="numeric" min="1" max="9" id="i27" onclick="select();" oninput="updateTextArea();blur()"></input></td>
+							<td id="28" class="td28"><input type="text" inputmode="numeric" min="1" max="9" id="i28" onclick="select();" oninput="updateTextArea();blur()"></input></td>
+							<td id="29" class="td29"><input type="text" inputmode="numeric" min="1" max="9" id="i29" onclick="select();" oninput="updateTextArea();blur()"></input></td>
+							<td id="37" class="td37"><input type="text" inputmode="numeric" min="1" max="9" id="i37" onclick="select();" oninput="updateTextArea();blur()"></input></td>
+							<td id="38" class="td38"><input type="text" inputmode="numeric" min="1" max="9" id="i38" onclick="select();" oninput="updateTextArea();blur()"></input></td>
+							<td id="39" class="td39"><input type="text" inputmode="numeric" min="1" max="9" id="i39" onclick="select();" oninput="updateTextArea();blur()"></input></td>
+						</tr>
+						<tr>
+							<td id="14" class="td14"><input type="text" inputmode="numeric" min="1" max="9" id="i14" onclick="select();" oninput="updateTextArea();blur()"></input></td>
+							<td id="15" class="td15"><input type="text" inputmode="numeric" min="1" max="9" id="i15" onclick="select();" oninput="updateTextArea();blur()"></input></td>
+							<td id="16" class="td16"><input type="text" inputmode="numeric" min="1" max="9" id="i16" onclick="select();" oninput="updateTextArea();blur()"></input></td>
+							<td id="24" class="td24"><input type="text" inputmode="numeric" min="1" max="9" id="i24" onclick="select();" oninput="updateTextArea();blur()"></input></td>
+							<td id="25" class="td25"><input type="text" inputmode="numeric" min="1" max="9" id="i25" onclick="select();" oninput="updateTextArea();blur()"></input></td>
+							<td id="26" class="td26"><input type="text" inputmode="numeric" min="1" max="9" id="i26" onclick="select();" oninput="updateTextArea();blur()"></input></td>
+							<td id="34" class="td34"><input type="text" inputmode="numeric" min="1" max="9" id="i34" onclick="select();" oninput="updateTextArea();blur()"></input></td>
+							<td id="35" class="td35"><input type="text" inputmode="numeric" min="1" max="9" id="i35" onclick="select();" oninput="updateTextArea();blur()"></input></td>
+							<td id="36" class="td36"><input type="text" inputmode="numeric" min="1" max="9" id="i36" onclick="select();" oninput="updateTextArea();blur()"></input></td>
+						</tr>
+						<tr>
+							<td id="11" class="td11"><input type="text" inputmode="numeric" min="1" max="9" id="i11" onclick="select();" oninput="updateTextArea();blur()"></input></td>
+							<td id="12" class="td12"><input type="text" inputmode="numeric" min="1" max="9" id="i12" onclick="select();" oninput="updateTextArea();blur()"></input></td>
+							<td id="13" class="td13"><input type="text" inputmode="numeric" min="1" max="9" id="i13" onclick="select();" oninput="updateTextArea();blur()"></input></td>
+							<td id="21" class="td21"><input type="text" inputmode="numeric" min="1" max="9" id="i21" onclick="select();" oninput="updateTextArea();blur()"></input></td>
+							<td id="22" class="td22"><input type="text" inputmode="numeric" min="1" max="9" id="i22" onclick="select();" oninput="updateTextArea();blur()"></input></td>
+							<td id="23" class="td23"><input type="text" inputmode="numeric" min="1" max="9" id="i23" onclick="select();" oninput="updateTextArea();blur()"></input></td>
+							<td id="31" class="td31"><input type="text" inputmode="numeric" min="1" max="9" id="i31" onclick="select();" oninput="updateTextArea();blur()"></input></td>
+							<td id="32" class="td32"><input type="text" inputmode="numeric" min="1" max="9" id="i32" onclick="select();" oninput="updateTextArea();blur()"></input></td>
+							<td id="33" class="td33"><input type="text" inputmode="numeric" min="1" max="9" id="i33" onclick="select();" oninput="updateTextArea();blur()"></input></td>
+						</tr>
+					</table>
+				</td>
+				<td>
+					<textarea class="textarea" id="the_textarea" readonly />
+				</td>
+			</tr>
+		</table>
+	</body>
+</html>
